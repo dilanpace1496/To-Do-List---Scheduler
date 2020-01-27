@@ -17,6 +17,7 @@ function next() {
 }
 
 function previous() {
+    submitForm();
     currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
     currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
     showCalendar(currentMonth, currentYear);
@@ -47,6 +48,7 @@ function showCalendar(month, year) {
     for (let i = 0; i < 6; i++) {
         // creates a table row
         let row = document.createElement("tr");
+        row.style.height = "90px";
 
         //creating individual cells, filing them up with data.
         for (let j = 0; j < 7; j++) {
