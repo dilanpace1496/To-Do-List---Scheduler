@@ -17,7 +17,7 @@ function next() {
 }
 
 function previous() {
-    submitForm();
+    //submitForm();
     currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
     currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
     showCalendar(currentMonth, currentYear);

@@ -14,27 +14,31 @@
     <link rel="stylesheet" type="text/css" href="css/event.css" />
 </head>
 
-<body>
+<body onload="changeDate()">
 
     <div class="container">
         <form id="contact" action="" method="post">
-            <h3>Colorlib Contact Form</h3>
-            <h4>Contact us for custom quote</h4>
+            <h3>Create Task / Event</h3>
             <fieldset>
-                <input placeholder="Your name" type="title" tabindex="1" required autofocus>
+                <input placeholder="Task / Event Name" id="eventName" type="title" tabindex="1" required autofocus>
             </fieldset>
             <fieldset>
-                <input value="2020-01-27" type="date" tabindex="2" required>
+                <h4>Start:</h4>
+                <input value="" id="startTime" type="datetime-local" tabindex="2" required>
+            </fieldset>
+            <fieldset>
+                <h4>End:</h4>
+                <input value="" id="endTime" type="datetime-local" tabindex="3" required>
             </fieldset>
             <fieldset>
                 <h4>Event Color:</h4>
-                <input type="color" tabindex="3" required>
+                <input value="#1c76ad" type="color" id="colorLabel" tabindex="4" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
+                <input placeholder="Location" id="locationLabel" type="location" tabindex="5" required>
             </fieldset>
             <fieldset>
-                <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
+                <textarea placeholder="Add description" id="descLabel" tabindex="6" required></textarea>
             </fieldset>
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>

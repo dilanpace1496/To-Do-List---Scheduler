@@ -47,34 +47,41 @@ function getInputVal(id) {
 // Save message to firebase
 function saveMessage() {//, company, email, phone, message){
   var d = new Date();
-  var day = d.getDay();
   var hour = d.getHours();
   var minutes = d.getMinutes();
+  var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var newMessageRef = messagesRef;
-  switch (day) {
-    case 0:
-      var dayString = "Sunday";
-      break;
-    case 1:
-      var dayString = "Monday";
-      break;
-    case 2:
-      var dayString = "Tuesday";
-      break;
-    case 3:
-      var dayString = "Wednesday";
-      break;
-    case 4:
-      var dayString = "Thursday";
-      break;
-    case 5:
-      var dayString = "Friday";
-      break;
-    case 6:
-      var dayString = "Saturday";
-      break;
-  }
+  var day = days[d.getDay()];
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var month = months[d.getMonth()];
+  var dayExtends = ["","1st","2nd","3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th", "29th", "30th", "31st"]
+  var date = dayExtends[d.getDate()];
+
   newMessageRef.set({
-    timestamp: dayString+", "+String(hour)+":"+String(minutes)
+    timestamp: String(day) + ", " + String(month) + " " + String(date) + " | " + String(hour) + ":" + String(minutes)
   });
+}
+
+
+function changeDate() {
+  var d = new Date();
+  var day = d.getDate();
+  var month = d.getMonth() + 1;
+  var hour = d.getHours();
+  var minute = d.getMinutes();
+  if (month < 10) {
+    month = String("0" + month);
+  }
+  if (hour < 10) {
+    hour = String("0" + hour);
+  }
+  if (minute < 10) {
+    minute = String("0" + minute);
+  }
+  var minutes = d.getMinutes();
+  var year = d.getFullYear();
+  var dateFormat = String(year + "-" + month + "-" + day + "T" + hour + ":" + minute);
+  document.getElementById("startTime").setAttribute('value', dateFormat);
+  document.getElementById("endTime").setAttribute('value', dateFormat);
+
 }
