@@ -89,14 +89,8 @@ function saveMessage(dateLabel, name, startTime, endTime, colorLabel, locationLa
 
 
 function getEventsofDate(date) {
-  //firebase.database().ref('Events/').on('value', snap => {
-   // var rooms = Object.values(snap.val()).map(function (obj) {
-   //   return obj.StartTime;
-   // });
-   // console.log('firebaseHolyArray: ', rooms);
-  //});
-  //var x = $("li").toArray()
-  //console.log(snapshot.val().-LzeQLaAs7zwSS7zxyHy);
+  
+  console.log(snapshot.val());
   //array = Object.values(snapshot.val())
 }
 
