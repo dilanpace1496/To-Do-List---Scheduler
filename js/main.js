@@ -89,16 +89,16 @@ function saveMessage(dateLabel, name, startTime, endTime, colorLabel, locationLa
 
 
 function getEventsofDate(date) {
-  
-  console.log(snapshot.val());
+
+  //console.log(snapshot.val());
   //array = Object.values(snapshot.val())
 }
 
-function makeEvent(){
+function makeEvent() {
   window.location.replace("createEvent.html");
 }
 
-function gotoCalendar(){
+function gotoCalendar() {
   window.location.replace("index.html");
 }
 
