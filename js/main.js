@@ -19,13 +19,19 @@ var messagesRef = firebase.database().ref('Events');
 // Submit form
 function submitForm() {
 
-  // Get values
-  //var company = getInputVal('company');
-  //var email = getInputVal('email');
+
+  var name = getInputVal('eventName');
+  var date = getInputVal('startTime');
+  var startTime = getInputVal('startTime');
+  var endTime = getInputVal('endTime');
+  var colorLabel = getInputVal('colorLabel');
+  var locationLabel = getInputVal('locationLabel');
+  var descriptionLabel = getInputVal('descLabel');
+
   //var phone = getInputVal('phone');
   //var message = getInputVal('message');
   // Save message
-  saveMessage();//, company, email, phone, message);
+  saveMessage(date, name, startTime, endTime, colorLabel, locationLabel, descriptionLabel);//, company, email, phone, message);
 
   // Show alert
   //document.querySelector('.alert').style.display = 'block';
@@ -37,6 +43,7 @@ function submitForm() {
 
   // Clear form
   //document.getElementById('contactForm').reset();
+  getEventsofDate(date);
 }
 
 // Function to get get form values
@@ -45,21 +52,52 @@ function getInputVal(id) {
 }
 
 // Save message to firebase
-function saveMessage() {//, company, email, phone, message){
+function saveMessage(dateLabel, name, startTime, endTime, colorLabel, locationLabel, descriptionLabel) {//, company, email, phone, message){
   var d = new Date();
   var hour = d.getHours();
   var minutes = d.getMinutes();
+  if (minutes < 10) {
+    minutes = String("0" + minutes);
+  }
   var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var newMessageRef = messagesRef;
   var day = days[d.getDay()];
   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   var month = months[d.getMonth()];
-  var dayExtends = ["","1st","2nd","3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th", "29th", "30th", "31st"]
+  var dayExtends = ["", "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th", "29th", "30th", "31st"]
   var date = dayExtends[d.getDate()];
+  var year = d.getFullYear();
 
-  newMessageRef.set({
-    timestamp: String(day) + ", " + String(month) + " " + String(date) + " | " + String(hour) + ":" + String(minutes)
-  });
+  var dateLabel = dateLabel.substr(0, 10);
+
+  var dataRef = firebase.database().ref('Events/' + String(dateLabel));
+
+  dataRef.push({
+    Timestamp: String(day) + ", " + String(month) + " " + String(date) + ", " + String(year) + " | " + String(hour) + ":" + String(minutes),
+    StartTime: startTime,
+    EndTime: endTime,
+    Color: colorLabel,
+    Location: locationLabel,
+    Description: descriptionLabel,
+    Title: name
+
+  })
+
+
+}
+
+
+
+function getEventsofDate(date) {
+  //firebase.database().ref('Events/').on('value', snap => {
+   // var rooms = Object.values(snap.val()).map(function (obj) {
+   //   return obj.StartTime;
+   // });
+   // console.log('firebaseHolyArray: ', rooms);
+  //});
+  //var x = $("li").toArray()
+  //console.log(snapshot.val().-LzeQLaAs7zwSS7zxyHy);
+  //array = Object.values(snapshot.val())
 }
 
 

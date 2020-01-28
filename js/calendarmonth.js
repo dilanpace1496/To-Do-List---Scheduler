@@ -38,7 +38,6 @@ function showCalendar(month, year) {
     // clearing all previous cells
     tbl.innerHTML = "";
 
-    // filing data about month and in the page via DOM.
     monthAndYear.innerHTML = months[month] + " " + year;
     selectYear.value = year;
     selectMonth.value = month;
@@ -65,10 +64,13 @@ function showCalendar(month, year) {
             else {
                 cell = document.createElement("td");
                 cellText = document.createTextNode(date);
+                var paragraph = document.createElement("P");
+                paragraph.innerHTML = "This is paragraph";
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
                     cell.classList.add("bg-info");
                 } // color today's date
                 cell.appendChild(cellText);
+                cell.appendChild(paragraph);
                 row.appendChild(cell);
                 date++;
             }
@@ -76,13 +78,12 @@ function showCalendar(month, year) {
 
         }
 
-        tbl.appendChild(row); // appending each row into calendar body.
+        tbl.appendChild(row);
     }
 
 }
 
 
-// check how many days in a month code from https://dzone.com/articles/determining-number-days-month
 function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
