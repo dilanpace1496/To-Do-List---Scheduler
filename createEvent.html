@@ -17,7 +17,7 @@
 <body onload="changeDate()">
 
     <div class="container">
-        <form id="contact" action="" method="post">
+        <form id="contact">
             <h3>Create Task / Event</h3>
             <fieldset>
                 <input placeholder="Task / Event Name" id="eventName" type="title" tabindex="1" required autofocus>
@@ -41,7 +41,7 @@
                 <textarea placeholder="Add description" id="descLabel" tabindex="6" required></textarea>
             </fieldset>
             <fieldset>
-                <button name="submit" type="submit" id="contact-submit" onclick="submitForm()">Submit</button>
+                <button name="submit" type="button" id="contact-submit" onclick="submitForm();">Submit</button>
             </fieldset>
         </form>
     </div>

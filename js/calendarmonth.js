@@ -64,13 +64,19 @@ function showCalendar(month, year) {
             else {
                 cell = document.createElement("td");
                 cellText = document.createTextNode(date);
-                var paragraph = document.createElement("P");
-                paragraph.innerHTML = "This is paragraph";
+                var lineSpace = document.createElement("br");
+                var button = document.createElement("button");
+                button.innerHTML = "Add Event";
+                button.id = "createEventButton";
+                button.onclick = function () { makeEvent(); };
+
+
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
                     cell.classList.add("bg-info");
                 } // color today's date
                 cell.appendChild(cellText);
-                cell.appendChild(paragraph);
+                cell.appendChild(lineSpace);
+                cell.appendChild(button);
                 row.appendChild(cell);
                 date++;
             }

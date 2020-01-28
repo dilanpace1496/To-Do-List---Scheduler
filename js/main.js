@@ -83,7 +83,7 @@ function saveMessage(dateLabel, name, startTime, endTime, colorLabel, locationLa
 
   })
 
-
+  gotoCalendar();
 }
 
 
@@ -98,6 +98,14 @@ function getEventsofDate(date) {
   //var x = $("li").toArray()
   //console.log(snapshot.val().-LzeQLaAs7zwSS7zxyHy);
   //array = Object.values(snapshot.val())
+}
+
+function makeEvent(){
+  window.location.replace("createEvent.html");
+}
+
+function gotoCalendar(){
+  window.location.replace("index.html");
 }
 
 
